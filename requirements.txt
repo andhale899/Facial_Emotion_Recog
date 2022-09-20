@@ -1,0 +1,6 @@
+cvlib==0.2.7
+numpy==1.22.0
+opencv_python==4.5.5.62
+pandas==1.4.2
+streamlit==1.12.2
+tensorflow==2.10.0
