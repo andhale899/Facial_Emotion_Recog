@@ -63,6 +63,9 @@ if model_name=="Best_yet":
 
 
 #########################webcam BL###########################
+if input_method =="Webcam":
+    st.title("Live Webcam is currently unavaible")
+
 if input_method =="Webcam_ERROR":   
     # st.text("webcam test")
     st.title("Webcam Live Feed")
