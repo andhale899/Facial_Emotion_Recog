@@ -123,7 +123,7 @@ if input_method =="Webcam":
 
 
 if input_method=="Upload an image":
-    st.title('Siddhi ')
+    
     
     st.text("Please upload image file with a face")
 
@@ -225,7 +225,7 @@ if input_method=="Take a Picture":
         
         
         #face finder 
-        face_cascade = cv2.CascadeClassifier('saved_model\haarcascade_frontalface_default.xml')
+        face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
         # Detect faces
         faces = face_cascade.detectMultiScale(opencv_image, 1.1, 4)
         # st.text(len(faces))
