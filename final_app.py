@@ -55,9 +55,9 @@ with st.sidebar:
 #various model and their input config,label  can be defined 
 if model_name=="Best_yet":
     model=model = tf.keras.models.load_model("saved_model\emotion_modelgithubbbbb.hdf5")#best model
-    input_shape=(64,64)
+    input_shape=(64,64) # resolution
     clr=1 # 1 ~ grayscale 
-    labels= ['angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral']
+    labels= ['angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral'] #dict 
     
 
 
@@ -123,11 +123,14 @@ if input_method =="Webcam":
 
 
 if input_method=="Upload an image":
+    st.title('Siddhi ')
+    
     st.text("Please upload image file with a face")
+
     uploaded_file = st.file_uploader("Choose a image file")
     
-
-    if uploaded_file is not None:
+    
+    if uploaded_file  is not None:
         # Convert the file to an opencv image.
         
 
@@ -154,7 +157,7 @@ if input_method=="Upload an image":
         faces = face_cascade.detectMultiScale(opencv_image, 1.1, 4)
         # st.text(len(faces))
         if len(faces)>1:
-            st.title("Multiple Faces detected please try another image !!!")
+            st.title("Multiple Faces detected mode emotion will be displayed !!!")
         # let's display face rectangle
         for (x, y, w, h) in faces:
             # st.text("ZZ")
@@ -165,7 +168,8 @@ if input_method=="Upload an image":
             # cv2.imwrite('detcted.jpg', opencv_image)
             # cv2.imshow('img', img)
         
-        # st.text("gazab hui gyo")
+       
+
         
         if len(faces) !=0 :
             resized = cv2.resize(faces,input_shape)
@@ -264,3 +268,4 @@ if input_method=="Take a Picture":
 
 
 
+#EDA
