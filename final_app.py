@@ -54,7 +54,7 @@ with st.sidebar:
 
 #various model and their input config,label  can be defined 
 if model_name=="Best_yet":
-    model=model = tf.keras.models.load_model("saved_model\emotion_modelgithubbbbb.hdf5")#best model
+    model=model = tf.keras.models.load_model("emotion_modelgithubbbbb.hdf5")#best model
     input_shape=(64,64) # resolution
     clr=1 # 1 ~ grayscale 
     labels= ['angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral'] #dict 
