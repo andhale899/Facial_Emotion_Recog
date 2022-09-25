@@ -11,7 +11,7 @@ import streamlit as st
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import img_to_array
 # from tensorflow.keras.model import l
-from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2,preprocess_input as mobilenet_v2_preprocess_input
+from tensorflow.keras.applications.mobilenet_v2 import preprocess_input as mobilenet_v2_preprocess_input
 # from statistics import mode
 
 
@@ -33,7 +33,7 @@ from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2,preprocess_in
 #Model selector 
 model_name = st.sidebar.selectbox(
     "Please select model first ",
-    ("Best_yet", "Na", "Na","Na")
+    ("Best_yet", "Augmented_CNN", "Transfer_learning(NA)","Simple_CNN")
 )
 
 #radio for input method
@@ -57,6 +57,25 @@ if model_name=="Best_yet":
     model=model = tf.keras.models.load_model("emotion_modelgithubbbbb.hdf5")#best model
     input_shape=(64,64) # resolution
     clr=1 # 1 ~ grayscale 
+    labels= ['angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral'] #dict 
+
+if model_name=="Augmented_CNN":
+    model=model = tf.keras.models.load_model("Augmented_CNN_100_EPOCH_64_64_GRAYSCALE.h5")
+    input_shape=(48,48) # resolution
+    clr=1 # 1 ~ grayscale 
+    labels= ['angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral'] #dict 
+
+
+if model_name=="Simple_CNN":
+    model=model = tf.keras.models.load_model("CNN_50_EPOCH_64_64_GRAYSCALE.h5")
+    input_shape=(48,48) # resolution
+    clr=1 # 1 ~ grayscale 
+    labels= ['angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral'] #dict 
+
+if model_name=="Transfer_learning":
+    model=model = tf.keras.models.load_model("TRANSFER_25_EPOCH_224_224_RGB.h5")
+    input_shape=(224,224) # resolution
+    clr=3 # 1 ~ grayscale 
     labels= ['angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral'] #dict 
     
 
@@ -160,7 +179,7 @@ if input_method=="Upload an image":
         faces = face_cascade.detectMultiScale(opencv_image, 1.1, 4)
         # st.text(len(faces))
         if len(faces)>1:
-            st.title("Multiple Faces detected mode emotion will be displayed !!!")
+            st.title("Multiple Faces detected Please try again !!!")
         # let's display face rectangle
         for (x, y, w, h) in faces:
             # st.text("ZZ")
